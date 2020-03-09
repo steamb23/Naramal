@@ -31,6 +31,14 @@ namespace 나랏말
             문장 = 문장[0..^1];
             return 문장 + 받침치환(마지막문자, 받침);
         }
+
+        /// <summary>
+        /// 마지막 문자를 길게 늘입니다. 늘여진 문자의 모음은 단모음화됩니다.
+        /// </summary>
+        /// <param name="문장">늘여질 문장입니다.</param>
+        /// <param name="늘일량">문장을 늘일 양입니다.</param>
+        /// <param name="ㅢ분리">ㅢ를 ㅡㅣ소리로 변환할지 여부를 나타내는 값입니다.</param>
+        /// <returns>늘여진 문장입니다.</returns>
         public static 문자열 문장늘이기(문자열 문장, 정수 늘일량 = 1, 논리 ㅢ분리 = false)
         {
             if (늘일량 < 1)
@@ -77,13 +85,14 @@ namespace 나랏말
         /// <summary>
         /// 이중모음을 단모음으로 바꿉니다.
         /// </summary>
-        /// <param name="모음"></param>
-        /// <returns></returns>
+        /// <param name="모음">단모음으로 변환할 모음입니다.</param>
+        /// <returns>단모음입니다.</returns>
         /// <remarks>
         /// <para>특수 규칙인 (ㅟ, ㅢ) → ㅣ, (ㅚ) → ㅔ 는 필요시 호출자측에서 적절한 분기를 통해 다른 규칙을 적용하시는 것이 좋습니다. 특히 'ㅢ'의 경우에는 'ㅔ'로 발음되는 경우도 있으나 음이 늘어질경우 'ㅣ'로 변화하는 특성이 강해 'ㅣ'로 변경하도록 하였습니다.</para>
         /// </remarks>
         public static 모음 단모음화(모음 모음)
         {
+            // 자체 연구한 규칙으로 구현됨
             switch (모음)
             {
                 case 모음.ㅑ:
