@@ -62,10 +62,16 @@ namespace 나랏말
         /// <inheritdoc cref="문자열.Format(문자열, object[])"/>
         public static 문자열 포맷(문자열 format, params object[] args) => string.Format(인스턴스, format, args);
 
+        /// <inheritdoc cref="ICustomFormatter.Format(문자열, object, IFormatProvider)"/>
         public string? Format(string format, object arg, IFormatProvider formatProvider)
         {
             // 콜백 유효성 검사
             if (!Equals(formatProvider))
+                return null;
+
+            // 포맷 유효성 검사
+            // 실패시 범용 포맷으로 변환
+            if (!format.Contains('/'))
                 return null;
 
             var stringArg = arg.ToString();
