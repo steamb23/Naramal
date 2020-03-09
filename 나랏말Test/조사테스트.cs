@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using Xunit;
 
 namespace 나랏말.Test
@@ -68,6 +69,20 @@ namespace 나랏말.Test
         {
             int rand = new Random().Next();
             Assert.Equal(조사비교용(문자열, "이", "가") + $" {rand:n0} 개 있다.", 조사.보간($"{문자열:이/가} {rand:n0} 개 있다."));
+        }
+        
+        [Theory]
+        [InlineData("벼")]
+        [InlineData("밀")]
+        public void 혼합보간_문화권(string 문자열)
+        {
+            DateTime now = DateTime.Now;
+
+            foreach(var cultureInfo in CultureInfo.GetCultures(CultureTypes.AllCultures))
+            {
+                Assert.Equal(조사비교용(문자열, "은", "는") + string.Format(cultureInfo, " {0}에 수확되었습니다.", now),
+                    조사.보간(cultureInfo, $"{문자열:은/는} {now}에 수확되었습니다."));
+            }
         }
     }
 }
