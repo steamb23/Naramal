@@ -82,6 +82,7 @@ namespace 나랏말
                 return null;
         }
 
+        /// <inheritdoc cref="IFormatProvider.GetFormat(Type)"/>
         public object? GetFormat(Type formatType) => formatType == typeof(ICustomFormatter) ? this : null;
     }
 }
