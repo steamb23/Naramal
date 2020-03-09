@@ -33,6 +33,22 @@ namespace 나랏말
             this.AnotherFormatProvider = anotherFormatProvider;
         }
 
+        /// <summary>
+        /// 또다른 포맷 제공자의 인스턴스를 가져옵니다.
+        /// </summary>
+        public IFormatProvider? AnotherFormatProvider { get; } = null;
+
+        private static volatile 조사? _인스턴스;
+        public static 조사 인스턴스
+        {
+            get
+            {
+                if (_인스턴스 == null)
+                    _인스턴스 = new 조사();
+                return _인스턴스;
+            }
+        }
+
         public static 문자열 선택(문자열 단어, 문자열 조사)
         {
             var 받침 = 한글.받침추출(단어[^1]);
@@ -53,22 +69,6 @@ namespace 나랏말
         }
 
         public static 문자열 처리(문자열 단어, 문자열 조사) => 단어 + 선택(단어, 조사);
-
-        private static volatile 조사? _인스턴스;
-        public static 조사 인스턴스
-        {
-            get
-            {
-                if (_인스턴스 == null)
-                    _인스턴스 = new 조사();
-                return _인스턴스;
-            }
-        }
-
-        /// <summary>
-        /// 또다른 포맷 제공자의 인스턴스를 가져옵니다.
-        /// </summary>
-        public IFormatProvider? AnotherFormatProvider { get; } = null;
 
         /// <summary>
         /// 문자열 보간 방식을 사용해 문자열 표현으로 바꿉니다.
