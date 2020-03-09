@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "나랏말", "나랏말\나랏말.csproj", "{C35B82D0-48DE-4E8A-BA8E-E42449FE8EC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "나랏말.Test", "나랏말Test\나랏말.Test.csproj", "{876F2979-1DC0-45E6-820F-2C27A7C26249}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "나랏말.Test", "나랏말Test\나랏말.Test.csproj", "{876F2979-1DC0-45E6-820F-2C27A7C26249}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4A2E6D3A-7914-4ABA-80B2-BEB7C55840F3}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
