@@ -14,18 +14,23 @@ namespace 나랏말
         /// <summary>
         /// 지정한 문자의 받침을 지정한 받침으로 치환합니다.
         /// </summary>
-        /// <param name="문자"></param>
-        /// <param name="받침"></param>
-        /// <returns></returns>
+        /// <param name="문자">받침이 치환될 문자입니다.</param>
+        /// <param name="받침">치환할 받침입니다.</param>
+        /// <returns>받침이 치환된 문자입니다.</returns>
         public static 문자 받침치환(문자 문자, 받침 받침) => (문자)받침치환(문자, (정수)받침);
 
         /// <summary>
-        /// 
+        /// 지정한 텍스트에서 마지막 문자의 받침을 지정한 받침으로 치환합니다.
         /// </summary>
-        /// <param name="문장"></param>
-        /// <param name="늘일량"></param>
-        /// <param name="ㅢ분리"></param>
-        /// <returns></returns>
+        /// <param name="문장">마지막 문자의 받침이 치환될 문자열입니다.</param>
+        /// <param name="받침">치환할 받침입니다.</param>
+        /// <returns>마지막 문자의 받침이 치환된 문장입니다.</returns>
+        public static 문자열 받침치환(문자열 문장, 받침 받침)
+        {
+            var 마지막문자 = 문장[^1];
+            문장 = 문장[0..^1];
+            return 문장 + 받침치환(마지막문자, 받침);
+        }
         public static 문자열 문장늘이기(문자열 문장, 정수 늘일량 = 1, 논리 ㅢ분리 = false)
         {
             if (늘일량 < 1)
