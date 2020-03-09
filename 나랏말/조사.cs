@@ -25,9 +25,9 @@ namespace 나랏말
         }
 
         /// <summary>
-        /// 조사 클래스의 인스턴스를 초기화합니다.
+        /// 조사 클래스의 인스턴스를 초기화합니다. 매개 변수에서 문화권별 서식 지정 정보를 제공합니다.
         /// </summary>
-        /// <param name="anotherFormatProvider">같이 사용될 포맷 제공자의 인스턴스입니다.</param>
+        /// <param name="anotherFormatProvider">문화권별 형식 정보를 제공하는 개체입니다.</param>
         public 조사(IFormatProvider anotherFormatProvider)
         {
             this.AnotherFormatProvider = anotherFormatProvider;
@@ -38,17 +38,27 @@ namespace 나랏말
         /// </summary>
         public IFormatProvider? AnotherFormatProvider { get; } = null;
 
-        private static volatile 조사? _인스턴스;
-        public static 조사 인스턴스
+        private static volatile 조사? _기본;
+
+        /// <summary>
+        /// <see cref="조사"/> 클래스에 대한 기본 인스턴스를 가져옵니다.
+        /// </summary>
+        public static 조사 기본
         {
             get
             {
-                if (_인스턴스 == null)
-                    _인스턴스 = new 조사();
-                return _인스턴스;
+                if (_기본 == null)
+                    _기본 = new 조사();
+                return _기본;
             }
         }
 
+        /// <summary>
+        /// 지정된 단어에 맞는 조사를 자동으로 선택합니다.
+        /// </summary>
+        /// <param name="단어">조사가 붙을 단어입니다.</param>
+        /// <param name="조사">단어에 붙일 조사입니다.</param>
+        /// <returns>선택된 조사입니다.</returns>
         public static 문자열 선택(문자열 단어, 문자열 조사)
         {
             var 받침 = 한글.받침추출(단어[^1]);
@@ -68,6 +78,12 @@ namespace 나랏말
             }
         }
 
+        /// <summary>
+        /// 지정된 단어에 맞는 조사를 자동으로 선택하고 붙입니다.
+        /// </summary>
+        /// <param name="단어">조사가 붙을 단어입니다.</param>
+        /// <param name="조사">단어에 붙일 조사입니다.</param>
+        /// <returns>단어와 자동 선택된 조사가 결합된 문자열입니다.</returns>
         public static 문자열 처리(문자열 단어, 문자열 조사) => 단어 + 선택(단어, 조사);
 
         /// <summary>
@@ -75,32 +91,75 @@ namespace 나랏말
         /// </summary>
         /// <param name="문자열">보간될 문자열입니다.</param>
         /// <returns>보간된 문자열입니다.</returns>
-        public static 문자열 보간(FormattableString 문자열) => 문자열.ToString(인스턴스);
+        public static 문자열 보간(FormattableString 문자열) => 문자열.ToString(기본);
 
         /// <summary>
-        /// 지정된 포맷 제공자와 문자열 보간 방식을 사용해 문자열 표현으로 바꿉니다.
+        /// 문자열 보간 방식을 사용해 문자열 표현으로 바꿉니다. 매개 변수에서 문화권별 서식 지정 정보를 제공합니다.
         /// </summary>
-        /// <param name="포맷제공자">포매팅 방법을 제공하는 포맷 제공자의 인스턴스입니다.</param>
+        /// <param name="포맷제공자">문화권별 형식 정보를 제공하는 개체입니다.</param>
         /// <param name="문자열">보간될 문자열입니다.</param>
         /// <returns>보간된 문자열입니다.</returns>
         public static 문자열 보간(IFormatProvider 포맷제공자, FormattableString 문자열) => 문자열.ToString(new 조사(포맷제공자));
 
         /// <summary>
-        /// <see cref="조사"/> 클래스의 인스턴스와 문자열 보간 방식을 사용해 문자열 표현으로 바꿉니다.
+        /// 문자열 보간 방식을 사용해 문자열 표현으로 바꿉니다. 매개 변수에서 문화권별 서식 지정 정보를 가진 <see cref="조사"/> 개체를 제공합니다.
         /// </summary>
-        /// <param name="조사"><see cref="조사"/> 클래스의 인스턴스입니다.</param>
+        /// <param name="조사">문화권별 형식 정보를 가진 <see cref="조사"/> 개체입니다.</param>
         /// <param name="문자열">보간될 문자열입니다.</param>
         /// <returns>보간된 문자열입니다.</returns>
         public static 문자열 보간(조사 조사, FormattableString 문자열) => 문자열.ToString(조사);
 
+        /// <summary>
+        /// 지정된 문자열에 있는 형식 항목을 지정된 개체의 문자열 표현으로 바꿉니다.
+        /// </summary>
+        /// <param name="format">조사를 포함하는 복합 형식 문자열입니다.</param>
+        /// <param name="arg">형식을 지정할 개체입니다.</param>
+        /// <returns>변환된 문자열입니다.</returns>
+        public static 문자열 포맷(문자열 format, object arg) => string.Format(기본, format, arg);
 
-        public static 문자열 포맷(문자열 format, object arg) => string.Format(인스턴스, format, arg);
-        public static 문자열 포맷(문자열 format, params object[] args) => string.Format(인스턴스, format, args);
+        /// <summary>
+        /// 지정된 문자열에 있는 형식 항목을 지정된 배열에 있는 해당 개체의 문자열 표현으로 바꿉니다.
+        /// </summary>
+        /// <param name="format">조사를 포함하는 복합 형식 문자열입니다.</param>
+        /// <param name="args">형식을 지정할 개체의 배열입니다.</param>
+        /// <returns></returns>
+        public static 문자열 포맷(문자열 format, params object[] args) => string.Format(기본, format, args);
 
+        /// <summary>
+        /// 지정된 문자열에 있는 형식 항목을 지정된 개체의 문자열 표현으로 바꿉니다. 매개 변수에서 문화권별 서식 지정 정보를 제공합니다.
+        /// </summary>
+        /// <param name="formatProvider">문화권별 형식 정보를 제공하는 개체입니다.</param>
+        /// <param name="format">조사를 포함하는 복합 형식 문자열입니다.</param>
+        /// <param name="arg">형식을 지정할 개체입니다.</param>
+        /// <returns>변환된 문자열입니다.</returns>
         public static 문자열 포맷(IFormatProvider formatProvider, string format, object arg) => string.Format(new 조사(formatProvider), format, arg);
+
+        /// <summary>
+        /// 지정된 문자열에 있는 형식 항목을 지정된 배열에 있는 해당 개체의 문자열 표현으로 바꿉니다. 매개 변수에서 문화권별 서식 지정 정보를 제공합니다.
+        /// </summary>
+        /// <param name="formatProvider">문화권별 형식 정보를 제공하는 개체입니다.</param>
+        /// <param name="format">조사를 포함하는 복합 형식 문자열입니다.</param>
+        /// <param name="args">형식을 지정할 개체의 배열입니다.</param>
+        /// <returns>변환된 문자열입니다.</returns>
         public static 문자열 포맷(IFormatProvider formatProvider, string format, params object[] args) => string.Format(new 조사(formatProvider), format, args);
 
+        /// <summary>
+        /// 지정된 문자열에 있는 형식 항목을 지정된 개체의 문자열 표현으로 바꿉니다. 매개 변수에서 문화권별 서식 지정 정보를 가진 <see cref="조사"/> 개체를 제공합니다.
+        /// </summary>
+        /// <param name="조사">문화권별 형식 정보를 가진 <see cref="조사"/> 개체입니다.</param>
+        /// <param name="format">조사를 포함하는 복합 형식 문자열입니다.</param>
+        /// <param name="arg">형식을 지정할 개체입니다.</param>
+        /// <returns>변환된 문자열입니다.</returns>
+
         public static 문자열 포맷(조사 조사, string format, object arg) => string.Format(조사, format, arg);
+
+        /// <summary>
+        /// 지정된 문자열에 있는 형식 항목을 지정된 배열에 있는 해당 개체의 문자열 표현으로 바꿉니다. 매개 변수에서 문화권별 서식 지정 정보를 가진 <see cref="조사"/> 개체를 제공합니다.
+        /// </summary>
+        /// <param name="조사">문화권별 형식 정보를 가진 <see cref="조사"/> 개체입니다.</param>
+        /// <param name="format">조사를 포함하는 복합 형식 문자열입니다.</param>
+        /// <param name="args">형식을 지정할 개체의 배열입니다.</param>
+        /// <returns>변환된 문자열입니다.</returns>
         public static 문자열 포맷(조사 조사, string format, params object[] args) => string.Format(조사, format, args);
 
         /// <inheritdoc cref="ICustomFormatter.Format(문자열, object, IFormatProvider)"/>
@@ -108,7 +167,9 @@ namespace 나랏말
         {
             // 콜백 유효성 검사
             if (!Equals(formatProvider) || format == null || arg == null)
+#nullable disable
                 return AnotherFormat(AnotherFormatProvider, format, arg);
+#nullable enable
 
             // 포맷 유효성 검사
             // 실패시 범용 포맷으로 변환
