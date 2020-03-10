@@ -10,17 +10,29 @@ dotnet_csproj:
   assembly_version: '{version}'
   file_version: '{version}'
   informational_version: '{version}'
-
 build_script:
 - ps: >-
     chcp 65001
 
     nuget restore
 
-    msbuild "C:\projects\naratmal\나랏말.sln" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:GeneratePackageOnBuild=false
+    msbuild "C:\projects\naratmal\나랏말.sln" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+artifacts:
+- path: 나랏말\bin\Release\netstandard2.1\나랏말.dll
+  name: 나랏말.dll
+- path: 나랏말\bin\나랏말.xml
+  name: 나랏말.xml
 deploy:
 - provider: NuGet
   api_key:
     secure: dgSmducMCHthwTqmWf71Rg61xUkGYSHHJLpvIXtcS17rSpdfoSqKSy0QnCZr9AzQ
+  on:
+    branch: master
+- provider: GitHub
+  tag: v${appveyor_build_version)
+  auth_token:
+    secure: Q4Ak8JDvPWzaI5f+WmyG2f8F7J8UkEy+rtZa8b/2dURwz9LJZcAMzrMy+/Gpcc7f
+  prerelease: false
+  force_update: false
   on:
     branch: master
