@@ -16,8 +16,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\steam\source\repos\나랏말\나랏말\bin\나랏말.xml</DocumentationFile>
     <Nullable>enable</Nullable>
+    <DocumentationFile>\bin\Debug\netstandard2.1\나랏말.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Nullable>enable</Nullable>
+    <DocumentationFile>\bin\Release\netstandard2.1\나랏말.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
