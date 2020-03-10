@@ -18,9 +18,11 @@ build_script:
 
     msbuild "C:\projects\naratmal\나랏말.sln" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 artifacts:
-- path: 나랏말\bin\Release\netstandard2.1\나랏말.dll
+- path: 'C:\projects\naratmal\나랏말\bin\Release\netstandard2.1\나랏말.dll'
   name: 나랏말.dll
-- path: 나랏말\bin\나랏말.xml
+- path: 'C:\projects\naratmal\나랏말\bin\Release\netstandard2.1\나랏말.{version}.nupkg'
+  name: 나랏말.dll
+- path: 'C:\projects\naratmal\나랏말\bin\나랏말.xml'
   name: 나랏말.xml
 deploy:
 - provider: NuGet
