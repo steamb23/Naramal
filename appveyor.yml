@@ -20,7 +20,7 @@ build_script:
 artifacts:
 - path: 나랏말\bin\Release\netstandard2.1\나랏말.dll
   name: 나랏말.dll
-- path: 나랏말\bin\Release\나랏말.$(version).nupkg
+- path: 나랏말\bin\Release\나랏말.$(appveyor_build_version).nupkg
   name: 나랏말.nupkg
 - path: 나랏말\bin\Release\netstandard2.1\나랏말.xml
   name: 나랏말.xml
