@@ -1,4 +1,9 @@
 # 나랏말
+[![Build status](https://ci.appveyor.com/api/projects/status/fr92fo37r0saq85n/branch/master?svg=true)](https://ci.appveyor.com/project/steamb23/naratmal/branch/master)
+
+[![Build status](https://ci.appveyor.com/api/projects/status/fr92fo37r0saq85n?svg=true)](https://ci.appveyor.com/project/steamb23/naratmal)
+
+![Nuget](https://img.shields.io/nuget/v/나랏말)
 
 C#에서의 유연한 한글처리를 위해 만들어진 라이브러리입니다. 유니코드2.0부터
 정립된 Hangul Syllables 기반으로 동작하여 한글의 자소를 분리하고 다시 이를
