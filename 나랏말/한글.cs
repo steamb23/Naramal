@@ -141,7 +141,7 @@ namespace 나랏말
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static 정수 조합(정수 자음, 정수 모음, 정수 받침) =>
-            자음 > 0 && 모음 > 0 && 받침 > 0 ?
+            자음 >= 0 && 모음 >= 0 && 받침 >= 0 ?
             0xac00 + 자음 * 모음갯수 * 받침갯수 + 모음 * 받침갯수 + 받침 :
             0;
         #endregion
