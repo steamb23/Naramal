@@ -8,7 +8,7 @@ C#에서의 유연한 한글처리를 위해 만들어진 라이브러리입니�
 
 또한 특정 규칙에 따라 구분되는 조사 처리 기능을 제공합니다.
 
-## 사용 방법
+## [사용 방법](https://github.com/steamb23/Naramal/wiki)
 
 [위키](https://github.com/steamb23/Naramal/wiki)를 확인해주세요.
 
@@ -46,7 +46,7 @@ This library is designed for flexible Korean processing in C#. It operates on th
 
 It also provides postpositions processing that is separated by specific rules in korean.
 
-## How to use
+## [How to use](https://github.com/steamb23/Naramal/wiki)
 
 Please check [wiki](https://github.com/steamb23/Naramal/wiki).
 
