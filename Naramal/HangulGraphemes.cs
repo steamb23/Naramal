@@ -2,22 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-using 문자열 = System.String;
-using 문자 = System.Char;
-using 정수 = System.Int32;
-using 논리 = System.Boolean;
-
-namespace 나랏말
+namespace Naramal.HangulGraphemes
 {
     /// <summary>
     /// 자음을 나타냅니다.
     /// </summary>
-    public enum 자음 : 정수
+    public enum Consonant : int
     {
         /// <summary>
         /// 변환에 실패한 값입니다.
         /// </summary>
-        실패 = -1,
+        Failed = -1,
         /// <summary>
         /// 자음 ㄱ입니다.
         /// </summary>
@@ -98,12 +93,12 @@ namespace 나랏말
     /// <summary>
     /// 모음을 나타냅니다.
     /// </summary>
-    public enum 모음 : 정수
+    public enum Vowel : int
     {
         /// <summary>
         /// 변환에 실패한 값입니다.
         /// </summary>
-        실패 = -1,
+        Failed = -1,
         /// <summary>
         /// 모음 ㅏ입니다.
         /// </summary>
@@ -193,16 +188,16 @@ namespace 나랏말
     /// <summary>
     /// 받침을 나타냅니다.
     /// </summary>
-    public enum 받침 : 정수
+    public enum FinalConsonant : int
     {
         /// <summary>
         /// 변환에 실패한 값입니다.
         /// </summary>
-        실패 = -1,
+        Failed = -1,
         /// <summary>
         /// 받침이 없다는 것을 알리는 값입니다.
         /// </summary>
-        없음 = 0,
+        None = 0,
         /// <summary>
         /// 받침 ㄱ입니다.
         /// </summary>
