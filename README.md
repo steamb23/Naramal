@@ -1,6 +1,6 @@
 # 나라말
 
-![Nuget](https://img.shields.io/nuget/v/Naramal)
+[![Nuget](https://img.shields.io/nuget/v/Naramal)](https://www.nuget.org/packages/Naramal/)
 
 [Read in english](#Naramal)
 
