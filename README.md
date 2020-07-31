@@ -1,8 +1,8 @@
 # 나라말
 
-<img src="https://raw.githubusercontent.com/steamb23/Naramal/master/Icon.png" alt="icon" height="128" width="128">
-
 [![Nuget](https://img.shields.io/nuget/v/Naramal)](https://www.nuget.org/packages/Naramal/)
+
+<img src="https://raw.githubusercontent.com/steamb23/Naramal/master/Icon.png" alt="icon" height="128" width="128">
 
 [Read in english](#Naramal)
 
