@@ -155,7 +155,7 @@ namespace Naramal
         /// <returns>변환된 문자열입니다.</returns>
         public static string Format(Josa 조사, string format, params object[] args) => string.Format(조사, format, args);
 
-        /// <inheritdoc cref="ICustomFormatter.Format(문자열, object, IFormatProvider)"/>
+        /// <inheritdoc cref="ICustomFormatter.Format(string, object, IFormatProvider)"/>
         public string Format(string format, object arg, IFormatProvider formatProvider)
         {
             // 콜백 유효성 검사

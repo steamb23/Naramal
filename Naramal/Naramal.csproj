@@ -9,12 +9,18 @@
     <Company>SteamB23</Company>
     <PackageProjectUrl>https://github.com/steamb23/Naramal</PackageProjectUrl>
     <Copyright>Copyright (c) 2020 SteamB23</Copyright>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/steamb23/Naramal</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>korean;josa;</PackageTags>
     <PackageIcon>Icon.png</PackageIcon>
+    <PackageReleaseNotes></PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\Naramal.xml</DocumentationFile>
+    <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

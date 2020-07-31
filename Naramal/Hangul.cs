@@ -62,7 +62,7 @@ namespace Naramal
         /// <summary>
         /// <see cref="Hangul"/> 구조체의 인스턴스를 초기화합니다.
         /// </summary>
-        /// <param name="char"><see cref="Hangul"/> 구조체로 변환될 한글 문자입니다.</param>
+        /// <param name="character"><see cref="Hangul"/> 구조체로 변환될 한글 문자입니다.</param>
         public Hangul(char character)
         {
             if (CheckHangulSyllable(character))
