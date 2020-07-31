@@ -2,6 +2,30 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Description>This library is designed for flexible Korean processing in C#.</Description>
+    <Authors>SteamB23</Authors>
+    <Company>SteamB23</Company>
+    <PackageProjectUrl>https://github.com/steamb23/Naramal</PackageProjectUrl>
+    <Copyright>Copyright (c) 2020 SteamB23</Copyright>
+    <Version>1.0.0</Version>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <RepositoryUrl>https://github.com/steamb23/Naramal</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>korean;josa;</PackageTags>
+    <PackageIcon>Icon.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\나랏말\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\Icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
