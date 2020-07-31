@@ -49,14 +49,14 @@ namespace Naramal
         /// <summary>
         /// <see cref="Hangul"/> 구조체의 인스턴스를 초기화합니다.
         /// </summary>
-        /// <param name="Consonant">설정할 자음입니다.</param>
-        /// <param name="Vowel">설정할 모음입니다.</param>
-        /// <param name="FinalConsonant">설정할 받침입니다. 기본값은 <see cref="FinalConsonant.None"/>입니다.</param>
-        public Hangul(Consonant Consonant, Vowel Vowel, FinalConsonant FinalConsonant = FinalConsonant.None)
+        /// <param name="consonant">설정할 자음입니다.</param>
+        /// <param name="vowel">설정할 모음입니다.</param>
+        /// <param name="finalConsonant">설정할 받침입니다. 기본값은 <see cref="FinalConsonant.None"/>입니다.</param>
+        public Hangul(Consonant consonant, Vowel vowel, FinalConsonant finalConsonant = FinalConsonant.None)
         {
-            this.Consonant = Consonant;
-            this.Vowel = Vowel;
-            this.FinalConsonant = FinalConsonant;
+            this.Consonant = consonant;
+            this.Vowel = vowel;
+            this.FinalConsonant = finalConsonant;
         }
 
         /// <summary>
